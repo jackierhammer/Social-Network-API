@@ -34,11 +34,17 @@ const userSchema = new Schema(
     },
     {
         toJSON: {
+            virtuals: true,
             getters: true
         },
         id: false,
     }
 );
+
+// creates a virtual that retrieves a user's friend count on query
+userSchema.virtual('friendCount').get(function () {
+    return this.friends.length;
+});
 
 // creates user model using user schema 
 const User = model("User", userSchema);

@@ -95,7 +95,7 @@ const userController = {
         })
         .catch((err) => res.status(500).json(err));
     }
-}
+};
 
 // export user controller
 module.exports = userController;

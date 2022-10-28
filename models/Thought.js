@@ -1,5 +1,5 @@
 // imports schema and model from mongoose
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 // imports date formatting helpers
 const dateFormat = require('../utils/dateFormat');
 

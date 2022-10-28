@@ -1,5 +1,5 @@
 // imports schema and model from mongoose
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 // creates a new schema for user data
 const userSchema = new Schema(

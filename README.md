@@ -23,7 +23,7 @@ After cloning the respository, run npm i in the terminal to install all npm pack
     
 After installing the necessary tools, run node server.js in the terminal from the project directory to start running the database server.
 
-Walkthrough video coming soon!!!
+![Walkthrough Video](assets/SocialMediaAPI.mp4)
 
 ## Contributing
 

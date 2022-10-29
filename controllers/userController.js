@@ -44,7 +44,7 @@ const userController = {
 
     // PUT to update a user by ID
     updateUser(req, res) {
-        User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true)
+        User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
             .then(userData => {
                 !userData
                     ? res.status(404).json({ message: 'No user was found with that id' })

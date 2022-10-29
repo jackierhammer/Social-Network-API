@@ -41,8 +41,8 @@ const thoughtController = {
             .then(thoughtData => {
                 // adds the thought to the user's thought array
                 User.findOneAndUpdate(
-                    { _id: body.userId },
-                    { $push: { thoughts: thougthData._id } },
+                    { _id: req.body.userId },
+                    { $push: { thoughts: thoughtData._id } },
                     { new: true }
                 )
                     .then(userData => {
@@ -57,7 +57,7 @@ const thoughtController = {
 
     // PUT to update a thought by ID
     updateThought(req, res) {
-        Thought.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true)
+        Thought.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
             .then(thoughtData => {
                 !thoughtData
                     ? res.status(404).json({ message: 'No thought was found with that id' })
@@ -90,8 +90,9 @@ const thoughtController = {
     addReaction(req, res) {
         // finds the thought by id and adds the reaction to its reaction array
         Thought.findOneAndUpdate(
-            { _id: req.params.thoughtId },
-            { $addToSet: { reactions: req.body } },
+            // id refers to the id of the thought we are assigning this reaction to
+            { _id: req.params.id },
+            { $push: { reactions: req.body } },
             { new: true }
         )
             .then((thoughtData) => {
@@ -106,7 +107,8 @@ const thoughtController = {
     deleteReaction(req, res) {
         // finds the thought by its id and takes the reaction out
         Thought.findOneAndUpdate(
-            { _id: req.params.thoughtId },
+            // id refers to the id of the thought associated with this reaction
+            { _id: req.params.id },
             { $pull: { reactions: { reactionId: req.body.reactionId } } },
             { new: true }
         )
